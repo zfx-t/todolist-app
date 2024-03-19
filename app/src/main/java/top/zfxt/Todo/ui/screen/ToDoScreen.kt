@@ -83,7 +83,8 @@ fun ToDoScreen() {
             }
         }
 
-        Column {
+        Column(modifier = Modifier.fillMaxSize(),
+            ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -98,7 +99,7 @@ fun ToDoScreen() {
                 )
                 Icon(
                     painter = painterResource(id = R.drawable.moon), contentDescription = null,
-                    modifier = Modifier, tint = Color.White,
+                    modifier = Modifier.scale(0.5f), tint = Color.White,
                 )
             }
             Spacer(modifier = Modifier.height(180.dp))
@@ -106,10 +107,10 @@ fun ToDoScreen() {
             ToDoItem(Modifier.clip(RoundedCornerShape(10.dp)))
             Spacer(modifier = Modifier.height(20.dp))
             ToDoList()
-            Spacer(modifier = Modifier.height(100.dp))
-            ToolBar()
-        }
 
+
+        }
+        ToolBar(Modifier.align(Alignment.BottomCenter).padding(bottom = 20.dp))
     }
 }
 

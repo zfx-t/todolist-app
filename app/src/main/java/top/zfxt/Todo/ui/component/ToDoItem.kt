@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import top.zfxt.Todo.R
 
 @Composable
@@ -32,7 +33,7 @@ fun ToDoItem(modifier: Modifier=Modifier,isEditing: Boolean = false) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(60.dp)
+                .height(70.dp)
                 .padding(horizontal = 120.dp)
                 .shadow(20.dp)
                 .then(modifier)
@@ -53,7 +54,7 @@ fun ToDoItem(modifier: Modifier=Modifier,isEditing: Boolean = false) {
                 if (isEditing) {
                     TextField(value = "", onValueChange = {})
                 } else {
-                    Text("Create a new todo…")
+                    Text("Create a new todo…", fontSize = 16.sp)
                 }
 
             }
