@@ -1,5 +1,6 @@
 package top.zfxt.Todo.ui.screen
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -16,8 +18,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.TileMode
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,23 +43,42 @@ import top.zfxt.Todo.ui.component.ToolBar
 fun ToDoScreen() {
 
     Box {
-        Column {
-            Image(
-                painter = painterResource(id = R.drawable.todo_light),
-                contentDescription = null,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(0.37f)
-            )
+        Column(modifier = Modifier.fillMaxHeight()) {
+                Image(
+                    painter = painterResource(id = R.drawable.todo_light),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .weight(0.3f)
+                        .drawBehind {
+                            // 定义颜色线性渐变的起始颜色和结束颜色
+                            val startColor = Color(0XFF5596FF)
+                            val endColor = Color(0xFFAC2DEB)
+                            // 创建颜色线性渐变Brush对象
+                            val linearGradientBrush = Brush.linearGradient(
+                                colors = listOf(startColor, endColor),
+                                start = Offset(Float.POSITIVE_INFINITY, 0f),
+                                end = Offset(0f, Float.POSITIVE_INFINITY),
+
+                                )
+                            drawRect(
+                                brush = linearGradientBrush,
+                                size = size,
+                            )
+                        }
+                        .alpha(0.4f),
+                    contentScale = ContentScale.Crop,
+                    )
             Column(
                 modifier = Modifier
                     .weight(0.63f)
-                    .background(Color(0xDA31D8EE))
+                    .background(Color(0XFFF7F7F8))
                     .fillMaxSize()
             ) {
 
             }
         }
+
         Column {
             Row(
                 modifier = Modifier
