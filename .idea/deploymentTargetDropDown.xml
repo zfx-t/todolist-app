@@ -2,29 +2,7 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="ToDoItemPreview">
-        <State>
-          <runningDeviceTargetSelectedWithDropDown>
-            <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="adb-HA1RRAMF-W5w1dh._adb-tls-connect._tcp" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-19T08:22:45.786844300Z" />
-        </State>
-      </entry>
-      <entry key="ToDoListPreview">
-        <State />
-      </entry>
-      <entry key="TodoScreenPreview (1)">
-        <State />
-      </entry>
-      <entry key="ToolBarPreview">
+      <entry key="TodoScreenPreview">
         <State />
       </entry>
       <entry key="app">

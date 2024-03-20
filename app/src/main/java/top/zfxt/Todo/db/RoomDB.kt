@@ -3,23 +3,18 @@ package top.zfxt.Todo.db
 import android.content.Context
 import android.util.Log
 import androidx.room.Database
-import androidx.room.DatabaseConfiguration
-import androidx.room.InvalidationTracker
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import androidx.sqlite.db.SupportSQLiteOpenHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import top.zfxt.Todo.dao.UserDao
-import top.zfxt.Todo.entity.User
+import top.zfxt.Todo.dao.ToDoItemDao
+import top.zfxt.Todo.entity.ToDoItem
 
-@Database(entities = [User::class], version = 1, exportSchema = false)
+@Database(entities = [ToDoItem::class], version = 1, exportSchema = false)
 abstract class RoomDB : RoomDatabase() {
 
-    //创建userDao
-    abstract fun userDao(): UserDao
-
+    abstract fun ToDoItemDao(): ToDoItemDao
     companion object {
         private var INSTANCE: RoomDB? = null
 
@@ -42,7 +37,7 @@ abstract class RoomDB : RoomDatabase() {
                 //第一次创建数据库时调用
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
-                    Log.d("TAG", "first onCreate db version: " + db.version)
+                    Log.d("First", "first onCreate db version: " + db.version)
                 }
             }
         }
