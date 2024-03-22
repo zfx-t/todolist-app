@@ -12,10 +12,17 @@ class ToDoListViewModel(val db: ToDoItemDao) : ViewModel() {
     var todoList: List<ToDoItem> by mutableStateOf(db.getAll())
     private set
 
+
+
     var todoSize by mutableIntStateOf(todoList.size)
     private set
     fun refresh(){
         todoList = db.getAll()
         todoSize = todoList.size
     }
+
+    fun onFinish(id:Int){
+        todoList = todoList.map { if (it.id == id) it.copy(completed = !it.completed) else it }
+    }
+
 }

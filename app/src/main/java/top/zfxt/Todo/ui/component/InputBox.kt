@@ -9,6 +9,12 @@ import org.koin.androidx.compose.koinViewModel
 import top.zfxt.Todo.ui.viewmodel.InputBoxViewModel
 
 @Composable
-fun InputBox(vm:InputBoxViewModel= koinViewModel()) {
-    ToDoItem(Modifier.clip(RoundedCornerShape(10.dp)),true, text = vm.text,vm::onChangeText, vm::addToList)
+fun InputBox(vm: InputBoxViewModel = koinViewModel()) {
+    ToDoItem(
+        Modifier.clip(RoundedCornerShape(10.dp)),
+        true,
+        text = vm.text,
+        onTextChange = vm::onChangeText,
+        onAdd = vm::addToList
+    )
 }

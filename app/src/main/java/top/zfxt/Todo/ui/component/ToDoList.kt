@@ -51,10 +51,10 @@ fun ToDoList(
 
                 ToDoItem(
                     Modifier.clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp)),
-                    text = item.title
+                    text = item.title, completed = item.completed, onFinish = vm::onFinish,id=item.id
                 )
             } else {
-                ToDoItem(text = item.title)
+                ToDoItem(text = item.title, completed = item.completed, onFinish = vm::onFinish,id=item.id)
             }
         }
         item {
