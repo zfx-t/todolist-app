@@ -47,21 +47,21 @@ fun ToDoItem(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(70.dp)
-            .padding(horizontal = 120.dp)
-            .shadow(20.dp)
+            .height(50.dp)
+            .padding(horizontal = 40.dp)
+            .shadow(5.dp)
             .then(modifier)
             .background(Color.White),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(start = 30.dp)
+            modifier = Modifier.padding(start = 10.dp)
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.oval),
                 contentDescription = null,
-                modifier = Modifier.alpha(0.5f)
+                modifier = Modifier.alpha(0.5f).scale(0.8f),
             )
             Spacer(modifier = Modifier.width(10.dp))
             if (isEditing) {
@@ -97,7 +97,7 @@ fun ToDoItem(
 
                     })
             } else {
-                Text(text, fontSize = 16.sp)
+                Text(text, fontSize = 13.sp)
             }
 
         }

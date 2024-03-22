@@ -29,7 +29,7 @@ class InputBoxViewModel(val db: ToDoItemDao) : ViewModel() {
             val id = db.insert(ToDoItem(title = text))
             shareFlow.emit(true)
             Log.i("db", "插入成功，id为$id")
-
+            text=""
         }
     }
 

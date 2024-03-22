@@ -78,7 +78,7 @@ fun ToDoScreen() {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 60.dp, start = 60.dp, end = 60.dp),
+                    .padding(top = 60.dp, start = 40.dp, end = 40.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
@@ -92,7 +92,7 @@ fun ToDoScreen() {
                     modifier = Modifier.scale(0.5f), tint = Color.White,
                 )
             }
-            Spacer(modifier = Modifier.height(180.dp))
+            Spacer(modifier = Modifier.height(40.dp))
 
             InputBox()
             Spacer(modifier = Modifier.height(20.dp))

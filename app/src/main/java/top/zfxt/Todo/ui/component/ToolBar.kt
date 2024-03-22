@@ -28,19 +28,19 @@ fun ToolBar(modifier:Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(60.dp)
-                .padding(horizontal = 120.dp)
+                .padding(horizontal = 40.dp)
                 .shadow(70.dp)
                 .clip(RoundedCornerShape(10.dp))
                 .background(Color.White)
             , horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "All", fontSize = 18.sp)
-            Text(text = "Active", fontSize = 18.sp)
-            Text(text = "Complete", fontSize = 18.sp)
+            Text(text = "All", fontSize = 14.sp)
+            Text(text = "Active", fontSize = 14.sp)
+            Text(text = "Complete", fontSize = 14.sp)
         }
         Spacer(modifier = Modifier.height(40.dp))
-        Text(text = "Drag and drop to reorder list", fontSize = 24.sp)
+        Text(text = "Drag and drop to reorder list", fontSize = 16.sp)
     }
 }
 

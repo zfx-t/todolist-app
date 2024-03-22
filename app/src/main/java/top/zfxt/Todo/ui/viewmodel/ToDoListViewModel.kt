@@ -16,5 +16,6 @@ class ToDoListViewModel(val db: ToDoItemDao) : ViewModel() {
     private set
     fun refresh(){
         todoList = db.getAll()
+        todoSize = todoList.size
     }
 }

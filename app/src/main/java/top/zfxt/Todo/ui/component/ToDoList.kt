@@ -62,16 +62,16 @@ fun ToDoList(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(70.dp)
-                    .padding(horizontal = 120.dp)
-                    .shadow(20.dp)
+                    .height(50.dp)
+                    .padding(horizontal = 40.dp)
+                    .shadow(5.dp)
                     .clip(RoundedCornerShape(bottomStart = 10.dp, bottomEnd = 10.dp))
                     .background(Color.White),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = "${vm.todoSize} items left", modifier = Modifier.padding(start = 30.dp))
-                Text(text = "Clear Completed", modifier = Modifier.padding(end = 30.dp))
+                Text(text = "${vm.todoSize} items left", modifier = Modifier.padding(start = 10.dp))
+                Text(text = "Clear Completed", modifier = Modifier.padding(end = 10.dp))
             }
 
 
