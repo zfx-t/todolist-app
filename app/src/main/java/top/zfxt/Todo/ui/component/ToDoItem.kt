@@ -126,7 +126,8 @@ fun ToDoItem(
                 Text(
                     text,
                     fontSize = 13.sp,
-                    textDecoration = if (completed) TextDecoration.LineThrough else TextDecoration.None
+                    textDecoration = if (completed) TextDecoration.LineThrough else TextDecoration.None,
+
                 )
             }
 
