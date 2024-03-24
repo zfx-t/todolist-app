@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -31,16 +32,16 @@ fun ToolBar(modifier:Modifier = Modifier) {
                 .padding(horizontal = 40.dp)
                 .shadow(70.dp)
                 .clip(RoundedCornerShape(10.dp))
-                .background(Color.White)
+                .background(MaterialTheme.colorScheme.onBackground)
             , horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "All", fontSize = 14.sp)
-            Text(text = "Active", fontSize = 14.sp)
-            Text(text = "Complete", fontSize = 14.sp)
+            Text(text = "All", fontSize = 14.sp,color = MaterialTheme.colorScheme.onTertiary)
+            Text(text = "Active", fontSize = 14.sp,color = MaterialTheme.colorScheme.onTertiary)
+            Text(text = "Complete", fontSize = 14.sp,color = MaterialTheme.colorScheme.onTertiary)
         }
         Spacer(modifier = Modifier.height(40.dp))
-        Text(text = "Drag and drop to reorder list", fontSize = 16.sp)
+        Text(text = "Drag and drop to reorder list", fontSize = 16.sp,color = MaterialTheme.colorScheme.onTertiary)
     }
 }
 

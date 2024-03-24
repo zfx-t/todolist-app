@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -32,49 +34,58 @@ import top.zfxt.Todo.R
 import top.zfxt.Todo.ui.component.InputBox
 import top.zfxt.Todo.ui.component.ToDoList
 import top.zfxt.Todo.ui.component.ToolBar
+import top.zfxt.Todo.ui.theme.isDarkTheme
 
 @Composable
 fun ToDoScreen() {
 
-    Box {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+    ) {
         Column(modifier = Modifier.fillMaxHeight()) {
-                Image(
-                    painter = painterResource(id = R.drawable.todo_light),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .weight(0.3f)
-                        .drawBehind {
-                            // 定义颜色线性渐变的起始颜色和结束颜色
-                            val startColor = Color(0XFF5596FF)
-                            val endColor = Color(0xFFAC2DEB)
-                            // 创建颜色线性渐变Brush对象
-                            val linearGradientBrush = Brush.linearGradient(
-                                colors = listOf(startColor, endColor),
-                                start = Offset(Float.POSITIVE_INFINITY, 0f),
-                                end = Offset(0f, Float.POSITIVE_INFINITY),
 
-                                )
-                            drawRect(
-                                brush = linearGradientBrush,
-                                size = size,
-                            )
+            Image(
+                painter = painterResource(id = if(isDarkTheme) R.drawable.background_night else R.drawable.background_light),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(0.3f)
+                    .drawBehind {
+
+                        // 定义颜色线性渐变的起始颜色和结束颜色
+                        var startColor = Color(0XFF5596FF)
+                        var endColor = Color(0xFFAC2DEB)
+                        if (isDarkTheme) {
+                            startColor = Color(0xFF3710BD)
+                            endColor = Color(0XFFA42395)
                         }
-                        .alpha(0.4f),
-                    contentScale = ContentScale.Crop,
-                    )
+                        // 创建颜色线性渐变Brush对象
+                        val linearGradientBrush = Brush.linearGradient(
+                            colors = listOf(startColor, endColor),
+                            start = Offset(Float.POSITIVE_INFINITY, 0f),
+                            end = Offset(0f, Float.POSITIVE_INFINITY),
+
+                            )
+                        drawRect(
+                            brush = linearGradientBrush,
+                            size = size,
+                        )
+                    }
+                    .alpha(0.4f),
+                contentScale = ContentScale.Crop,
+            )
             Column(
                 modifier = Modifier
                     .weight(0.63f)
-                    .background(Color(0XFFF7F7F8))
                     .fillMaxSize()
-            ) {
-
-            }
+            ) {}
         }
 
-        Column(modifier = Modifier.fillMaxSize(),
-            ) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -84,13 +95,16 @@ fun ToDoScreen() {
             ) {
 
                 Text(
-                    text = "TODO", modifier = Modifier,
-                    fontSize = 36.sp, color = Color.White
+                    text = "TODO", modifier = Modifier, fontSize = 36.sp, color = Color.White
                 )
-                Icon(
-                    painter = painterResource(id = R.drawable.moon), contentDescription = null,
-                    modifier = Modifier.scale(0.5f), tint = Color.White,
-                )
+                IconButton(onClick = {
+                    isDarkTheme = !isDarkTheme
+                }) {
+                    Icon(
+                        painter = painterResource(id = if(isDarkTheme) R.drawable.sun else R.drawable.moon), contentDescription = null,
+                        modifier = Modifier.scale(0.5f), tint = Color.White,
+                    )
+                }
             }
             Spacer(modifier = Modifier.height(40.dp))
 
@@ -102,7 +116,8 @@ fun ToDoScreen() {
         ToolBar(
             Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 20.dp))
+                .padding(bottom = 20.dp)
+        )
     }
 }
 

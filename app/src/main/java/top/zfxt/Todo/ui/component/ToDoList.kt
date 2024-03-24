@@ -13,6 +13,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -66,12 +67,12 @@ fun ToDoList(
                     .padding(horizontal = 40.dp)
                     .shadow(5.dp)
                     .clip(RoundedCornerShape(bottomStart = 10.dp, bottomEnd = 10.dp))
-                    .background(Color.White),
+                    .background(MaterialTheme.colorScheme.onBackground),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = "${vm.todoSize} items left", modifier = Modifier.padding(start = 10.dp))
-                Text(text = "Clear Completed", modifier = Modifier.padding(end = 10.dp))
+                Text(text = "${vm.todoSize} items left", modifier = Modifier.padding(start = 10.dp),color = MaterialTheme.colorScheme.onTertiary)
+                Text(text = "Clear Completed", modifier = Modifier.padding(end = 10.dp),color = MaterialTheme.colorScheme.onTertiary)
             }
 
 

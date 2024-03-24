@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -61,8 +62,9 @@ fun ToDoItem(
             .padding(horizontal = 40.dp)
             .shadow(5.dp)
             .then(modifier)
-            .background(Color.White),
+            .background(MaterialTheme.colorScheme.onBackground),
         verticalAlignment = Alignment.CenterVertically,
+
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -87,7 +89,7 @@ fun ToDoItem(
                                 start = Offset(Float.POSITIVE_INFINITY, 0f),
                                 end = Offset(0f, Float.POSITIVE_INFINITY),
                             ), shape = CircleShape
-                        ) else Modifier.background(Color.White)
+                        ) else Modifier
                     ))
 
 
@@ -127,7 +129,7 @@ fun ToDoItem(
                     text,
                     fontSize = 13.sp,
                     textDecoration = if (completed) TextDecoration.LineThrough else TextDecoration.None,
-
+                    color = MaterialTheme.colorScheme.onTertiary
                 )
             }
 
