@@ -1,6 +1,7 @@
 package top.zfxt.Todo.ui.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -47,15 +48,23 @@ fun ToDoList(
         }
     }
     LazyColumn() {
-        itemsIndexed(vm.todoList) { index, item ->
+        itemsIndexed(vm.todoList.sortedBy { it.completed }.filter { !it.archived }) { index, item ->
             if (index == 0) {
 
                 ToDoItem(
                     Modifier.clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp)),
-                    text = item.title, completed = item.completed, onFinish = vm::onFinish,id=item.id
+                    text = item.title,
+                    completed = item.completed,
+                    onFinish = vm::onFinish,
+                    id = item.id
                 )
             } else {
-                ToDoItem(text = item.title, completed = item.completed, onFinish = vm::onFinish,id=item.id)
+                ToDoItem(
+                    text = item.title,
+                    completed = item.completed,
+                    onFinish = vm::onFinish,
+                    id = item.id
+                )
             }
         }
         item {
@@ -71,8 +80,20 @@ fun ToDoList(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = "${vm.todoSize} items left", modifier = Modifier.padding(start = 10.dp),color = MaterialTheme.colorScheme.onTertiary)
-                Text(text = "Clear Completed", modifier = Modifier.padding(end = 10.dp),color = MaterialTheme.colorScheme.onTertiary)
+                Text(
+                    text = "${vm.todoSize} items",
+                    modifier = Modifier.padding(start = 10.dp),
+                    color = MaterialTheme.colorScheme.onTertiary
+                )
+                Text(
+                    text = "Clear Completed",
+                    modifier = Modifier
+                        .padding(end = 10.dp)
+                        .clickable {
+                                   vm.archive()
+                        },
+                    color = MaterialTheme.colorScheme.onTertiary
+                )
             }
 
 
